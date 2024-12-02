@@ -6,7 +6,7 @@
 /*   By: emehdaou <emehdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:27:30 by emehdaou          #+#    #+#             */
-/*   Updated: 2024/02/28 04:43:57 by emehdaou         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:51:44 by emehdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ void	ft_init(t_philo *philo, t_data *data, int argc, char **argv)
 
 	i = -1;
 	pthread_mutex_init(&data->print, NULL);
-	pthread_mutex_init(&data->all_eat_lock, NULL);
+	gettimeofday(&data->start, NULL);
 	while (++i < data->nb_philo)
 	{
-		philo[i].last_meal = get_time(data->start);
 		philo[i].id = i + 1;
 		philo[i].time_to_die = ft_atoi(argv[2]);
 		philo[i].time_to_eat = ft_atoi(argv[3]);
@@ -66,6 +65,7 @@ void	ft_init(t_philo *philo, t_data *data, int argc, char **argv)
 		else
 			philo[i].goal_eat = -1;
 		philo[i].eat_count = 0;
+		philo[i].last_meal = 0;
 	}
 }
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 	data.philo = philo;
 	pthread_mutex_init(&data.dead, NULL);
 	death.data = &data;
-	gettimeofday(&data.start, NULL);
+	pthread_mutex_init(&data.all_eat_lock, NULL);
 	ft_init(philo, &data, argc, argv);
 	init_thread(&death, data.philo, &data);
 	ft_free(&data, philo);
