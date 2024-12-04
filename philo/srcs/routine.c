@@ -6,7 +6,7 @@
 /*   By: emehdaou <emehdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 00:36:55 by emehdaou          #+#    #+#             */
-/*   Updated: 2024/08/29 19:03:08 by emehdaou         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:05:03 by emehdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	ft_odd(t_data *data)
 
 void	routine(t_philo *philo)
 {
-	// if (philo->id % 2 == 1)
-	// 	usleep(100);
 	while (1)
 	{
 		if (philo->id % 2 == 1)

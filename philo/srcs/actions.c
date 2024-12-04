@@ -6,7 +6,7 @@
 /*   By: emehdaou <emehdaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 00:42:02 by emehdaou          #+#    #+#             */
-/*   Updated: 2024/02/29 03:29:05 by emehdaou         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:09:02 by emehdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	eat(t_philo *philo)
 	take_forks(philo);
 	if (ft_is_dead(philo))
 	{
-		
 		pthread_mutex_unlock(philo->fork_right);
 		pthread_mutex_unlock(&philo->fork_left);
 		return (1);
